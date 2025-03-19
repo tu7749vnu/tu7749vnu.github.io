@@ -1,0 +1,156 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #333;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.navbar ul {
+    list-style: none;
+}
+
+.navbar ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar ul li a:hover {
+    color: #00aaff;
+}
+
+/* Main Container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Header Section */
+header {
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+header h2 {
+    font-size: 24px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Section Styling */
+section {
+    margin-bottom: 40px;
+}
+
+section h3 {
+    font-size: 24px;
+    color: #00aaff;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #00aaff;
+    display: inline-block;
+}
+
+.entry {
+    margin-bottom: 20px;
+}
+
+.entry h4 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.entry p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.entry ul {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+.entry ul li {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .navbar ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    header h2 {
+        font-size: 20px;
+    }
+
+    section h3 {
+        font-size: 20px;
+    }
+
+    .entry h4 {
+        font-size: 16px;
+    }
+
+    .entry p,
+    .entry ul li {
+        font-size: 14px;
+    }
+
+    
+}
+
+div.size {
+    width: 90%;
+    margin: 0 auto;
+}
+.endnav{
+    background-color: #333;
+    padding: 15px 0;
+    text-align: center
+    
+}
+#color{
+    color: #fff;
+}
