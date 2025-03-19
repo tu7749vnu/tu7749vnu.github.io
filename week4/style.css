@@ -1,0 +1,46 @@
+body{
+    background: darkturquoise;
+    margin: 0;
+}
+nav ul{
+    background: mintcream;
+    text-align: center;
+}
+nav ul li{
+    display: inline;
+    padding: 50px;
+    font-size: 35px;
+    line-height:40px;
+    height: 40px;
+    margin: 100px;
+    
+}
+nav ul li a{
+    color: cadetblue;
+    text-decoration: none;
+}
+
+article header:hover{
+    color: azure;
+    font-size: large;
+}
+header{
+    font-size: small;
+    font-style: italic;
+
+}
+
+
+
+body > header{
+    font-size: large;
+    font-weight: bold;
+}
+article > header{
+    font-size: medium;
+    font-weight: bold;
+}
+article > p{
+    font-size: small;
+    font-style: italic;
+}
