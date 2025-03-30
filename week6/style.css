@@ -1,0 +1,27 @@
+* {font: 20px "Comic Sans MS";} 
+{ 
+display: block; 
+text-align: center; 
+text-transform: capitalize; 
+text-decoration: underline; 
+width: 500px; 
+} 
+div { 
+background-color: yellow; 
+margin: 0px 0px 5px 5px; 
+width: 300px; 
+} 
+.GroupFormat { 
+font-weight: bold; 
+color: #f00; 
+width: 400px; 
+} 
+#TheHighestPriority { 
+background-color: #000; 
+font-weight: none; 
+font: italic 30px "Times New Roman"; 
+color: #fff; 
+} 
+#nametag{
+    text-decoration: underline;
+}
