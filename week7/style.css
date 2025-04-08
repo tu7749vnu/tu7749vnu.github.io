@@ -1,0 +1,35 @@
+@charset "utf-8";
+.menu div {
+width: 150px;
+height: 32px;
+background: -webkit-linear-gradient(top, #333, #999, #000) repeat-x;
+background: -o-linear-gradient(top, #333, #999, #000) repeat-x;
+background: -ms-linear-gradient(top, #333, #999, #000) repeat-x;
+background: -moz-linear-gradient(top, #333, #999, #000) repeat-x;
+border-radius: 20px 20px 0px 0px;
+color: #fff;
+font-weight: bold;
+text-align: center;
+vertical-align: middle;
+display: table-cell;
+text-transform: uppercase;
+}
+.menu ul {
+    list-style: inside url(.../img/bullet.png);
+    box-shadow: 5px 5px 10px #000;
+    border: 1px solid #000;
+    width: 148px;
+    margin: 0px;
+    padding: 0px;
+}
+.menu li {
+    padding: 5px;
+    width: 138px;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.menu li :hover {
+    background-color: #ff9;
+    font-weight: bold;
+    color: #f00;
+}

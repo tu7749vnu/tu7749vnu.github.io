@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Navigation Bar</title>
+<style>
+#header {
+  background: url(images/header.jpg);
+  height: 181px;
+  width: 900px;
+  margin-left: 20%;
+  margin-right: 25%;
+}
+
+#logo {
+  padding: 20px 0 0 50px;
+}
+
+#menu_top {
+  margin-top: 55px;
+  margin-left: 30px;
+  background: #ffffff;
+  height: 40px;
+  opacity: 0.6;
+  border-radius: 10px 0px 0px 10px;
+}
+.level1 { 
+list-style-type: none; 
+padding-top: 12px; 
+} 
+.level1 li { 
+display: inline; 
+float: left; 
+padding: 0px 20px 0px 0px; 
+height: 27px; 
+font-weight: bold; 
+} 
+.level1 li a, 
+.level1 li a:visited { 
+color:red; 
+text-decoration: none; 
+} 
+.level1 li a:hover { 
+color: green; 
+} 
+.level2 { 
+display: none; 
+position: absolute; 
+padding: 0px; 
+margin-top: 5px; 
+}
+.level1 li:hover>.level2 { 
+display: block; 
+} 
+.level2 li { 
+float: none; 
+position: relative; 
+display: block; 
+padding: 10px; 
+height: auto; 
+background:#ccc; 
+} 
+.level2 li:hover { 
+background:#CC0; 
+} 
+</style> 
+</head> 
+<body> 
+<header id="header"> 
+<div id="logo"><img src="images/logo.gif" width="191" height="66" alt="Flower Shop" /> 
+</div> 
+<nav id="menu_top"> 
+<ul class="level1"> 
+<li><a href="index.html">Home</a></li> 
+<li><a href="gioithieu.html">Introduction</a></li> 
+<li><a href="#">Flower Category</a> 
+<ul class="level2"> 
+<li>Sun Flower</li> 
+<li>Rose Flower</li> 
+<li>Lily Flower</li> 
+<li>Tulips Flower</li> 
+</ul> 
+</li> 
+<li><a href="dangky.html">Register</a></li> 
+<li><a href="#">Login</a></li> 
+<li><a href="lienhe.html">Contact</a></li> 
+</ul>
+</nav>
+</header>
+</body>
+</html>
