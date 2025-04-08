@@ -1,0 +1,39 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.flower-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+
+.flower-item {
+    text-align: center;
+}
+
+.flower-item img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.flower-item img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.flower-item p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+}
