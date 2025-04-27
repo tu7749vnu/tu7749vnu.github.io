@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometry Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .calculator {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #444;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            border-left: 4px solid #4CAF50;
+        }
+        .result-item {
+            margin-bottom: 10px;
+        }
+        .result-value {
+            font-weight: bold;
+            color: #2E7D32;
+        }
+        .shape-image {
+            display: block;
+            margin: 20px auto;
+            max-width: 200px;
+        }
+        .error {
+            color: #d32f2f;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Geometry Calculator</h1>
+        
+        <div class="calculator">
+            <h2>Rectangle Calculator</h2>
+            <div class="shape-diagram">
+                <svg class="shape-image" viewBox="0 0 200 120">
+                    <rect x="25" y="10" width="150" height="100" stroke="#333" stroke-width="2" fill="none" />
+                    <text x="95" y="60" text-anchor="middle" font-size="14">Area</text>
+                    <text x="100" y="130" text-anchor="middle" font-size="12">Width</text>
+                    <text x="10" y="60" text-anchor="middle" font-size="12" transform="rotate(-90, 10, 60)">Height</text>
+                    <line x1="25" y1="5" x2="175" y2="5" stroke="#333" stroke-width="1" />
+                    <line x1="25" y1="115" x2="175" y2="115" stroke="#333" stroke-width="1" />
+                    <line x1="20" y1="10" x2="20" y2="110" stroke="#333" stroke-width="1" />
+                    <line x1="180" y1="10" x2="180" y2="110" stroke="#333" stroke-width="1" />
+                </svg>
+            </div>
+            
+            <div class="input-group">
+                <label for="rect-width">Width:</label>
+                <input type="number" id="rect-width" min="0" step="any" placeholder="Enter width">
+                <div id="width-error" class="error"></div>
+            </div>
+            
+            <div class="input-group">
+                <label for="rect-height">Height:</label>
+                <input type="number" id="rect-height" min="0" step="any" placeholder="Enter height">
+                <div id="height-error" class="error"></div>
+            </div>
+            
+            <button onclick="calculateRectangle()">Calculate</button>
+            
+            <div id="rectangle-results" class="results" style="display: none;">
+                <div class="result-item">
+                    <span>Perimeter: </span>
+                    <span id="rect-perimeter" class="result-value"></span>
+                </div>
+                <div class="result-item">
+                    <span>Area: </span>
+                    <span id="rect-area" class="result-value"></span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Circle Calculator -->
+        <div class="calculator">
+            <h2>Circle Calculator (π = 3.14)</h2>
+            <div class="shape-diagram">
+                <svg class="shape-image" viewBox="0 0 200 200">
+                    <circle cx="100" cy="100" r="80" stroke="#333" stroke-width="2" fill="none" />
+                    <text x="100" y="105" text-anchor="middle" font-size="14">Area</text>
+                    <line x1="100" y1="100" x2="180" y2="100" stroke="#333" stroke-width="1" />
+                    <text x="140" y="90" text-anchor="middle" font-size="12">r</text>
+                </svg>
+            </div>
+            
+            <div class="input-group">
+                <label for="circle-radius">Radius:</label>
+                <input type="number" id="circle-radius" min="0" step="any" placeholder="Enter radius">
+                <div id="radius-error" class="error"></div>
+            </div>
+            
+            <button onclick="calculateCircle()">Calculate</button>
+            
+            <div id="circle-results" class="results" style="display: none;">
+                <div class="result-item">
+                    <span>Circumference (Perimeter): </span>
+                    <span id="circle-perimeter" class="result-value"></span>
+                </div>
+                <div class="result-item">
+                    <span>Area: </span>
+                    <span id="circle-area" class="result-value"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const PI = 3.14;
+        
+        function calculateRectangle() {
+            const width = parseFloat(document.getElementById('rect-width').value);
+            const height = parseFloat(document.getElementById('rect-height').value);
+            
+            document.getElementById('width-error').textContent = '';
+            document.getElementById('height-error').textContent = '';
+            
+            let isValid = true;
+            
+            if (isNaN(width) || width <= 0) {
+                document.getElementById('width-error').textContent = 'Please enter a valid positive number for width.';
+                isValid = false;
+            }
+            
+            if (isNaN(height) || height <= 0) {
+                document.getElementById('height-error').textContent = 'Please enter a valid positive number for height.';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                const perimeter = 2 * (width + height);
+                const area = width * height;
+                
+                document.getElementById('rect-perimeter').textContent = perimeter.toFixed(2) + ' units';
+                document.getElementById('rect-area').textContent = area.toFixed(2) + ' square units';
+                document.getElementById('rectangle-results').style.display = 'block';
+            } else {
+                document.getElementById('rectangle-results').style.display = 'none';
+            }
+        }
+        
+        function calculateCircle() {
+
+            const radius = parseFloat(document.getElementById('circle-radius').value);
+            
+            document.getElementById('radius-error').textContent = '';
+            
+            if (isNaN(radius) || radius <= 0) {
+                document.getElementById('radius-error').textContent = 'Please enter a valid positive number for radius.';
+                document.getElementById('circle-results').style.display = 'none';
+                return;
+            }
+            const circumference = 2 * PI * radius;
+            const area = PI * radius * radius;
+            document.getElementById('circle-perimeter').textContent = circumference.toFixed(2) + ' units';
+            document.getElementById('circle-area').textContent = area.toFixed(2) + ' square units';
+            document.getElementById('circle-results').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

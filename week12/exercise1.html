@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Input Validator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 20px 0;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #e7f3e8;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Number Input Validator</h1>
+        <p>Click the button below to enter two numbers and see their sum.</p>
+        <button onclick="getNumbers()">Enter Numbers</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function getNumbers() {
+            const numA = prompt("Enter number A");
+            
+            if (numA === null || numA === "") {
+                return; 
+            }
+            
+            const numberRegex = /^-?\d*\.?\d+$/;
+            if (!numberRegex.test(numA)) {
+                alert("Number A is formatted incorrect");
+                return; 
+            }
+            
+            const numB = prompt("Enter number B");
+        
+            if (numB === null || numB === "") {
+                return; 
+            }
+            if (!numberRegex.test(numB)) {
+                alert("Number B is formatted incorrect");
+                return; 
+            }
+  
+            const sum = parseFloat(numA) + parseFloat(numB);
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = `<strong>The sum of ${numA} and ${numB} is: ${sum}</strong>`;
+            resultDiv.className = "result success";
+        }
+    </script>
+</body>
+</html>
