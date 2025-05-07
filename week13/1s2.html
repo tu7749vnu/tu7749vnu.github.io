@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register New Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .form-header {
+            background-color: #1b5a8a;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        .form-container {
+            width: 100%;
+        }
+        
+        .form-row {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        
+        .form-label {
+            width: 25%;
+            text-align: right;
+            padding-right: 15px;
+            font-style: italic;
+        }
+        
+        .form-input {
+            width: 75%;
+        }
+        
+        input[type="text"], 
+        input[type="password"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 60%;
+            padding: 5px;
+        }
+        
+        textarea {
+            height: 100px;
+        }
+        
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .button {
+            padding: 5px 20px;
+            background-color: #e6e6e6;
+            border: 1px solid #999;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .alert-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.3);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .alert-box {
+            background-color: white;
+            border: 1px solid #999;
+            padding: 20px;
+            width: 400px;
+            position: relative;
+        }
+        
+        .alert-header {
+            background-color: white;
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .alert-close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+        }
+        
+        .alert-content {
+            margin-bottom: 15px;
+        }
+        
+        .alert-button {
+            text-align: right;
+        }
+        
+        .alert-button button {
+            padding: 5px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">REGISTER NEW ACCOUNT</div>
+        
+        <form id="registrationForm" onsubmit="return validateForm()">
+            <div class="form-row">
+                <div class="form-label">Username</div>
+                <div class="form-input">
+                    <input type="text" id="username" name="username">
+                    <div id="username-error" class="error-message">Username is required</div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">Password</div>
+                <div class="form-input">
+                    <input type="password" id="password" name="password">
+                    <div id="password-error" class="error-message">Password is required</div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">Confirm password</div>
+                <div class="form-input">
+                    <input type="password" id="confirm-password" name="confirm-password">
+                    <div id="confirm-password-error" class="error-message">Passwords do not match</div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">Gender</div>
+                <div class="form-input">
+                    <input type="radio" id="male" name="gender" value="male" checked>
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">Phone</div>
+                <div class="form-input">
+                    <input type="text" id="phone" name="phone">
+                    <div id="phone-error" class="error-message">Valid phone number is required</div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">Email</div>
+                <div class="form-input">
+                    <input type="email" id="email" name="email">
+                    <div id="email-error" class="error-message">Valid email is required</div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">Favourite</div>
+                <div class="form-input">
+                    <input type="checkbox" id="music" name="favourite" value="music" checked>
+                    <label for="music">Music</label>
+                    <input type="checkbox" id="reading" name="favourite" value="reading" checked>
+                    <label for="reading">Reading</label>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">Picture</div>
+                <div class="form-input">
+                    <input type="file" id="picture" name="picture">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">Description</div>
+                <div class="form-input">
+                    <textarea id="description" name="description"></textarea>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">Education level</div>
+                <div class="form-input">
+                    <select id="education" name="education">
+                        <option value="aptech">Aptech</option>
+                        <option value="college">College</option>
+                        <option value="university">University</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-label">Language</div>
+                <div class="form-input">
+                    <select id="language" name="language" size="4" multiple>
+                        <option value="vietnamese" selected>Vietnamese</option>
+                        <option value="english">English</option>
+                        <option value="french">French</option>
+                        <option value="japanese">Japanese</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="button-container">
+                <input type="submit" class="button" value="Register">
+                <input type="reset" class="button" value="Reset">
+            </div>
+        </form>
+    </div>
+    
+    <div class="alert-overlay" id="alert-overlay">
+        <div class="alert-box">
+            <div class="alert-header">JavaScript Alert</div>
+            <span class="alert-close" onclick="closeAlert()">×</span>
+            <div class="alert-content" id="alert-message"></div>
+            <div class="alert-button">
+                <button onclick="closeAlert()">OK</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showAlert(message) {
+            document.getElementById('alert-message').textContent = message;
+            document.getElementById('alert-overlay').style.display = 'flex';
+        }
+        
+        function closeAlert() {
+            document.getElementById('alert-overlay').style.display = 'none';
+        }
+        
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        function validatePhone(phone) {
+            const re = /^\d{10}$/;
+            return re.test(phone.replace(/\D/g, ''));
+        }
+        
+        function validateForm() {
+            let isValid = true;
+            const errorElements = document.getElementsByClassName('error-message');
+            for (let i = 0; i < errorElements.length; i++) {
+                errorElements[i].style.display = 'none';
+            }
+            
+            const username = document.getElementById('username').value.trim();
+            if (username === '') {
+                document.getElementById('username-error').style.display = 'block';
+                isValid = false;
+            }
+            
+            const password = document.getElementById('password').value;
+            if (password === '') {
+                document.getElementById('password-error').style.display = 'block';
+                isValid = false;
+            }
+            
+            const confirmPassword = document.getElementById('confirm-password').value;
+            if (password !== confirmPassword) {
+                document.getElementById('confirm-password-error').style.display = 'block';
+                isValid = false;
+            }
+            
+            const phone = document.getElementById('phone').value.trim();
+            if (phone !== '' && !validatePhone(phone)) {
+                document.getElementById('phone-error').style.display = 'block';
+                isValid = false;
+            }
+            
+            const email = document.getElementById('email').value.trim();
+            if (email === '' || !validateEmail(email)) {
+                document.getElementById('email-error').style.display = 'block';
+                showAlert('Invalid email address');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                showAlert('All register information are correct.');
+            }
+            
+            return false; 
+        }
+        function FormValid() {
+            return validateForm();
+        }
+    </script>
+</body>
+</html>

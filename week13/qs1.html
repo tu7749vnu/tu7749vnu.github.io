@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Date and Time</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        form {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 400px;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:nth-child(2) {
+            background-color: #dc3545;
+        }
+        button:nth-child(2):hover {
+            background-color: #a71d2a;
+        }
+    </style>
+    <script>
+        var timer = null;
+
+        function play() {
+            if (timer) {
+                clearTimeout(timer);
+            }
+            var daysOfWeek = ["Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"];
+            var today = new Date();
+            document.f.d.value = "Hôm nay là: " + daysOfWeek[today.getDay()] + ", ngày " + 
+                today.getDate() + ", tháng " + (today.getMonth() + 1) + ", năm " + today.getFullYear();
+            
+            var h = today.getHours();
+            var hours = h > 12 ? h - 12 : (h === 0 ? 12 : h); // Chuyển đổi sang định dạng 12 giờ
+            var minutes = today.getMinutes() < 10 ? "0" + today.getMinutes() : today.getMinutes();
+            var seconds = today.getSeconds() < 10 ? "0" + today.getSeconds() : today.getSeconds();
+            document.f.t.value = "Bây giờ là: " + hours + ":" + minutes + ":" + seconds + " " + (h >= 12 ? "PM" : "AM");
+            timer = setTimeout(play, 1000);
+        }
+        function stop() {
+            if (timer) {
+                clearTimeout(timer);
+                timer = null;
+            }
+        }
+    </script>
+</head>
+<body onload="play()">
+    <form name="f">
+        <input name="d" readonly /><br/>
+        <input name="t" readonly /><br/>
+        <button type="button" onclick="play()">Chạy đồng hồ</button>
+        <button type="button" onclick="stop()">Ngừng đồng hồ</button>
+    </form>
+</body>
+</html>
